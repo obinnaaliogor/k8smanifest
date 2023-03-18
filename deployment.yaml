@@ -16,7 +16,7 @@ spec:
         app: pythonapp
     spec:
       containers:
-      - image: obinnaaliogor/python-app:5
+      - image: obinnaaliogor/python-app:latest
         name: pythonapp
         resources: {}
 status: {}
