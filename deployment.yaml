@@ -2,37 +2,33 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
-  labels:
-    app: flaskdemo
-  name: flaskdemo
+  name: pythonapp
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: flaskdemo
+      app: pythonapp
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: flaskdemo
+        app: pythonapp
     spec:
       containers:
       - image: obinnaaliogor/python-app:5
-        name: flaskdemo
+        name: pythonapp
         resources: {}
 status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service
-  labels:
-    app: lb-service
+  name: pythonappsvc
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 5000
   selector:
-    app: flaskdemo
+    app: pythonapp
